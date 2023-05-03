@@ -1,1 +1,158 @@
+# GRASP Patterns
+## Creator
+- who should be responsible for creating an object 
+- Solution assign B to create instance of A if
+    - B contains or aggregates A
+    - B records A 
+    - B closley uses A 
+    - B has initalizing data for A that will be used to create A 
+- benifits 
+    - Low coupling
+    - lower maintenance dependencies 
+    - Higher opportunities for reuse 
+## information expert 
+- what is a geenral principl eof assiging responsibilites to objects
+- solution: use an information expert
+    - information expert 
+    - class that has the information necessary to fulfill the responsibility 
+- benifits
+    - information encapulstion 
+        - objects use their own info 
+        - low coupling
+        - lower maintenance dependencies 
+        - higher opprotunities for reuse 
+    - Behavior is distrobuted across classes with info
+## Controller
+- what first object beyond the UI layer recieves and coordinates a system operation 
+- solution
+    - assign a respolsibility to a class representing 
+        - the 'root' system device that software is running 
+    - handles system events 
+        - use same controller class for all system events in same use case
+        - name your controller {useCaseName}Handler/Controller/session
+            - similar to python's BaseHTTPHandler class
+- Facade controller 
+    - suitable when not many system events 
+    - issue: overassignment of responsibilities = low cohesion 
+- Usecase Controller 
+    - same controller for all events in a use case
+    - maintains stater info; identifies anomolies 
+    - Manageable classes
+    - consider when FacadeController leads to low cohesion or high coupling 
+- bloated controller 
+    - Single controller class receiving all system events 
+    - controller itself preforms many tasks 
+    - controller has many attributes 
+        - redundent info elsware 
+- unfocused and handling too many areas of responsibility 
+    - add more controllers 
+- controller benifits 
+    - increased potential for reuse 
+    - plugable interfaces 
+    - state of use case 
+## low coupling 
+- how strongly elements is connected to and has knowledged of and relies on others
+- forms of coupling
+    - X has an attribute that refers to a Y instance 
+    - X has a method that references an instance of Y
+    - X is a direct or indirect subclass of Y
+    - X implements Y, where Y is an interface 
+- problem: how to support low dependency, low change impact, and increased reuse 
+- solution
+    - assign responsibility so that coupling remains low 
+- issues with strong coupling 
+    - forced local changes 
+    - harder to understand in isolation & Reuse 
+- use this principle to evaluate alternitives 
+- in short low coupling means modular code
+- benifits 
+    - helps contain the increase in coupling 
+    - support more independent classes 
+- limitations  
+    - cannot obtain the absolute measure of when coupling is too high 
+- degreees of coupling 
+    - low coupling 
+        - classes are inherently generic and high probitibity of reuse 
+    - extreme low coupling 
+        - poor design: few incohesive, bloated, and complex objects 
+    - moderate coupling 
+        - acceptable 
+    - high coupling 
+        - accepltable for stable emelemtns, problem for unstable elements 
+## High Cohesion
+- how to keep objects focused, understandable, and manageable 
+- solution
+    - assign a responsibility so tha cohesion remains high 
+- cohesion 
+    - measure of how strongly related /focused the responsibilities of an element are 
+- low cohesion
+    - hard to understand and reuse 
+    - constantly effected by change 
+- use this pricaple to evaluate alternatives 
+- degrees of cohesion 
+    - very low 
+        - complete system function in one class
+    - low cohesion 
+        - related classes, but not many 
+    - High cohesion 
+        - moderate resplonsibilities
+        - partially resplonsible for a task and high coupling 
+    - moderate cohesion
+        - lightweight 
+        - sole resplonsibilities for a few logically related, but different areas
+## polymophism 
+- I hope you know what polymorphism is 
+- Benifits 
+    - new variations are easy to add
+    - new implimentations without effecting clients 
+    - she doesn't mention this in the slides but: high code reuse 
+## Pure fabrication
+- when you want to break high coupling and low cohesion, but other solutions like expert are not appropriate 
+- assign a highly cohesive set of responsibvilities to an artificial or conveninece class that does not represent a problem domain
+- benifits
+    - high cohesion is supported 
+    - reuse potential may increase 
+- limitations
+    - if overused 
+        - too many behavior objects
+        - responsibilities not co-located with data 
+        - affects coupling 
+## Indirection
+- when to assign a responsibility, to avoid direct coupling between two things
+- how to decouple objects so that low coupling is suported, and reuse remains high 
+- solution 
+    - assign responsibilites to an intermediate object to maintain between other components or services that are not directly coupled 
+    - this creates an indirection between two objects
+- maybe you have objects that need to offload data to a database or an API, so you might want to make an interface to do that
+    - that way you can make different classes of that interface if you want to change API's or databases without changing the using classes 
+- benifits 
+    - greatly reduces coupling 
+## Protected variations
+- how to design objects, subsystems, and systems to atha tthe variations or instability of these elements does not hamper the other elements
+- solution
+    - identify points of predicted variation ro instability 
+    - assign responsibilites to create a stable interface around them 
+- benifits 
+    - extensions required for new variations are easy to add
+    - new implimentations can be added easily 
+    - low coupling
+    - cost of changes lowered 
+# dont talk to strangers example 
+- direct objects are 'familiars'
+- indirect objects are 'strangers'
+    - foo.getA().getB().getC() **practice question**
+        - sucks
+- objects allowed to send messages to familiars
+    - 'this'/'self'
+    - parameter of a method
+    - attribute of this 
+    - element of a collection which is an attribute of this 
+    - object created in the method 
+# visibility 
+- ability to see, or have a reference to another object 
+- A has vilibility to B if **practice questions**
+    - Attribute visibility: B is an attribute of A
+    - Parameter visibility: B is passed as a parameter of A
+    - local visibility: B is declared as a local object within a method of A 
+    - global visibility: B is global to A
 
