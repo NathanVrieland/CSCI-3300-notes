@@ -1,5 +1,5 @@
 # Gang of Four design patterns
-## Abstract 
+## Factory 
 - who creates the adaptors?
 - how to determine which class of adaptor to make 
 - design principle 

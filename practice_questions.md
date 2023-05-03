@@ -1,4 +1,3 @@
-# HERE IS A COPY OF MY NOTES ON THE PRACTICE ANSWERS FOR THE FINAL
 # Design
 
 ## Give an example line of code that does not follow the design best practice recommendation: "Don't talk to strangers." 
